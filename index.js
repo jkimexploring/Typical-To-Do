@@ -1,6 +1,11 @@
-var express = require('express'),
-app = express()
-var todoRoutes = require('./routes/todos.js')
+var express = require('express');
+var app = express();
+var todoRoutes = require('./routes/todos.js');
+var bodyParse = require('body-parser');
+
+app.use(bodyParse.json);
+app.use(bodyParse.urlencoded({extended:true}))
+
 app.get('/', function(req, res){
     res.send("Hello World");
 });
