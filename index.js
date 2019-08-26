@@ -4,10 +4,11 @@ var todoRoutes = require('./routes/todos.js');
 var bodyParse = require('body-parser');
 
 app.use(bodyParse.json);
-app.use(bodyParse.urlencoded({extended:true}))
+app.use(bodyParse.urlencoded({extended:true}));
+app.use(express.static(__dirname + '/views'));
 
 app.get('/', function(req, res){
-    res.send("Hello World");
+   res.sendFile("index.html");
 });
 app.use('/api/todos', todoRoutes);
 
