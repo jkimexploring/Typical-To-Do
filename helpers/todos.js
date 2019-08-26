@@ -1,16 +1,16 @@
-var db = require('../models');
+import { Todo } from '../models';
 
-exports.getTodos = function(req, res){
+export function getTodos(req, res){
     //send all todos from database
-    db.Todo.find().then(function(todos){
+    Todo.find().then(function(todos){
         res.json(todos); //find todos
     }).catch(function(err){
         res.send(err); //if there's an error
     })
 }
 
-exports.createTodos = function(req, res){
-    db.Todo.create(req.body).then(
+export function createTodos(req, res){
+    Todo.create(req.body).then(
         function(newTodo){
          res.json(newTodo); // create new todo
         }).catch(function(err){
@@ -18,8 +18,8 @@ exports.createTodos = function(req, res){
         })
  }
 
- exports.getTodo = function(req, res){
-    db.Todo.findById(req.params.todoId).then(
+ export function getTodo(req, res){
+    Todo.findById(req.params.todoId).then(
         function(findTodo){
             res.json(findTodo)
         }).catch(function(err){
@@ -27,8 +27,8 @@ exports.createTodos = function(req, res){
         })
 }
 
-exports.updateTodos = function(req, res){
-    db.Todo.findOneAndUpdate({_id:req.params.todoId}, req.body, {new: true}).then(
+export function updateTodos(req, res){
+    Todo.findOneAndUpdate({_id:req.params.todoId}, req.body, {new: true}).then(
         function(updateTodo){
             res.json(updateTodo)
         }).catch(function(err){
@@ -36,8 +36,8 @@ exports.updateTodos = function(req, res){
         })
 }
 
-exports.deleteTodos = function(req, res){
-    db.Todo.remove({_id: req.params.todoId}).then(
+export function deleteTodos(req, res){
+    Todo.remove({_id: req.params.todoId}).then(
         function(){
             res.json({message: "We deleted the todo!"})
         }).catch(function(err){
@@ -45,4 +45,3 @@ exports.deleteTodos = function(req, res){
         })
 }
 
-module.exports = exports;
