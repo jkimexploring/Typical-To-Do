@@ -8,7 +8,7 @@ app.use(bodyParse.urlencoded({extended:true}));
 app.use(express.static(__dirname + '/views'));
 
 app.get('/', function(req, res){
-   res.sendFile("index.html");
+   res.sendFile("index.html"); //fix the path
 });
 app.use('/api/todos', todoRoutes);
 
