@@ -8,9 +8,9 @@ app.use(bodyParse.urlencoded({extended:true}));
 app.use(express.static(__dirname + '/views'));
 
 app.get('/', function(req, res){
-   res.send('Hello World')
+   res.sendFile(__dirname + '/views/index.html')
 });
-//app.use('/api/todos', todoRoutes);
+app.use('/api/todos', todoRoutes);
 
 app.listen(3000, function(){
     console.log("app is running on port 3000");
