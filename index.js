@@ -1,10 +1,10 @@
 var express = require('express');
 var app = express();
 var todoRoutes = require('./routes/todos.js');
-var bodyParse = require('body-parser');
+var bodyParser = require('body-parser');
 
-app.use(bodyParse.json);
-app.use(bodyParse.urlencoded({extended:true}));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static(__dirname + '/views'));
 
 app.get('/', function(req, res){
