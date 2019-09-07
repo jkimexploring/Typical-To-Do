@@ -1,1 +1,1 @@
-alert("Hi, from app.js");
+$('body').click(function(){alert("CLICKED!!")})
