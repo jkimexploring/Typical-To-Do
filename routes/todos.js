@@ -18,7 +18,7 @@ router.post('/', function(req, res){
         }).catch(function(err){
             res.send(err);
         })*/
-        res.send("hello from post route")
+        console.log(req.body);
  })
 
 module.exports = router;
