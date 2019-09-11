@@ -8,6 +8,9 @@ function addTodos(todos){
     todos.forEach(function(todo){
         var newTodo = $('<li>'+todo.name+'</li>');
         newTodo.addClass('task');
+        if(todo.completed){
+            newTodo.addClass("done")
+        }
         $('.list').append(newTodo);
     })
 }
