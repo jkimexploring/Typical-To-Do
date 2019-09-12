@@ -5,14 +5,22 @@ $(document).ready(function(){
         if (event.which == 13){
             createTodo();
         }
+    });
+    $('.list').on('click', 'span', function(){
+        $(this).parent().remove();
+        $.ajax({
+            method: 'DELETE',
+            url: '/api/todos/'
+        })
     })
 });
 
 function addTodo(todo){
-    var newTodo = $('<li>'+todo.name+'</li>');
+    var newTodo = $('<li>'+todo.name+'<span>X</span></li>');
     newTodo.addClass('task');
+    newTodo.data('id', todo._id);
     if(todo.completed){
-        newTodo.addClass("done")
+        newTodo.addClass("done");
     }
     $('.list').append(newTodo);
 }
