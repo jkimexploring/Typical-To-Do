@@ -7,11 +7,7 @@ $(document).ready(function(){
         }
     });
     $('.list').on('click', 'span', function(){
-        $(this).parent().remove();
-        $.ajax({
-            method: 'DELETE',
-            url: '/api/todos/'
-        })
+        deleteTodo($(this).parent())
     })
 });
 
@@ -44,3 +40,15 @@ function createTodo(){
       console.log(err);
     })
   }
+  
+ function deleteTodo(todo){
+    var clickedId = todo.data('id');
+    var deleteURL = '/api/todos/' + clickedId;
+   // todo.remove();
+    $.ajax({
+        method: 'DELETE',
+        url: deleteURL
+    }).then(function(data){
+        todo.remove();
+    })
+}
